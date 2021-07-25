@@ -27,6 +27,7 @@
 </p>
 <hr />
 <% @property.nearest_stations.each_with_index do |nearest_station, index| %>
+<% if nearest_station.name_of_railway != "" && nearest_station.station_name != "" &&  nearest_station.how_many_minutes_walk !="" %>
 <h1>Nearest Station <%= index +1 %></h1>
 <p>
   <strong>Name of railway:</strong>
@@ -42,7 +43,23 @@
   <strong>How many minutes walk:</strong>
   <%= nearest_station.how_many_minutes_walk %>
 </p>
+<% elsif nearest_station.name_of_railway != ""|| nearest_station.station_name != ""||  nearest_station.how_many_minutes_walk !="" %>
+<h1>Nearest Station <%= index +1 %></h1>
+<p>
+  <strong>Name of railway:</strong>
+  <%= nearest_station.name_of_railway %>
+</p>
 
+<p>
+  <strong>Station name:</strong>
+  <%= nearest_station.station_name %>
+</p>
+
+<p>
+  <strong>How many minutes walk:</strong>
+  <%= nearest_station.how_many_minutes_walk %>
+</p>
+<% end %>
 <% end %>
 <%= link_to 'Edit', edit_property_path(@property) %> | <%= link_to 'Back',
 properties_path %>
